@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Execute bootstrap.sh after initializing the vagrant box.
   config.vm.provision :shell, path: "bootstrap.sh"
   
-  
+  # Edit the line below if you get port mapping conflicts. This rule
+  # maps the rails server port on guest to port 3000 on the host. On
+  # the host use localhost:3000 to access the rails server.
   config.vm.network :forwarded_port, guest: 3000, host: 3000
 end

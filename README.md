@@ -2,6 +2,13 @@
 
 `vagrant-invoicerio` creates and configures a portable, reproducible and lightweight virtual development environment for [invoicerio](https://github.com/asm-products/invoicerio).
 
+This project uses [rwbox](https://github.com/le0pard/rwbox) as basebox (Ubuntu 14.04).
+
+>RWBox contains:
+> - RVM with compiled Ruby 1.9.3-p547, 2.0.0-p481, 2.1.2, jruby-1.7.12
+> - MySQL, PostgreSQL, Redis and Memcached
+> - Dev libs for pg, mysql2, rmagick, curb and another gems
+
 ## Installation
 First, make sure you have the latest version of [Vagrant](http://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed.
 
@@ -20,9 +27,8 @@ Note that Vagrant syncs the `vagrant-invoicerio` folder (on the host machine) wi
 To launch invoicerio, execute the folowing (from the `vagrant-invoicerio` folder):
 
 ```bash
-$ cd <vagrant-invoicerio>
-
-# If not done already, do a vagrant up
+# If not done already, initialize the virtual guest box.
+$ cd vagrant-invoicerio
 $ vagrant up 
 
 # The following command sshs into the vagrant virtual machine.
@@ -44,3 +50,26 @@ $ rm -rf vagrant-invoicerio
 # Reset the box, this will take a while.
 $ vagrant destroy --force && vagrant up
 ```
+
+## Tips
+Please read the [rwbox](https://github.com/le0pard/rwbox) README for more information or if you have trouble starting the virtual machine.
+
+### Credentials
+
+* MySQL:
+  * root/vagrant
+  * vagrant/vagrant
+* PostgreSQL:
+  * postgres/vagrant
+  * vagrant/vagrant
+
+
+### Port forwarding
+Ports form this list are forwarded by default:
+
+```
+3000 => 3100
+1080 => 1180
+```
+
+**NOTICE**: if you'll start mailcatcher gem and want to see mailcatcher inbox from outside – don't forget to use --ip option.

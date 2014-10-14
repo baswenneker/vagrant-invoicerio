@@ -32,24 +32,20 @@ This will download a virtual machine image and start a bootstrap process that in
 To launch invoicerio, execute the folowing (from the `vagrant-invoicerio` folder):
 
 ```bash
-# If not done already, initialize the virtual guest box.
-$ cd vagrant-invoicerio
-$ vagrant up 
-
 # The following command sshs into the vagrant virtual machine.
 $ vagrant ssh
 
 # Go to the invoicerio folder and start the rails server:
 $ cd /vagrant/invoicerio
 
-# Create the database etc.
+# Create the database etc, only execute this once.
 $ bin/rake db:create db:migrate
 
 # Start the server.
 $ bin/rails server
 ```
 
-Then point your browser on the host machine to [http://localhost:3100](http://localhost:3100) for the web-interface. Please keep in mind that the `Vagrantfile` contains a rule that maps port 3000 from the guest machine to port 3000 on the host machine. Edit the line if you get port mapping conflicts during `vagrant up`.
+Then point your browser on your host machine to [http://localhost:3100](http://localhost:3100) for the web-interface. Please keep in mind that the Vagrant box contains a rule that maps port 3000 from the guest machine to port 3100 on the host machine.
 
 ## Development
 Note that Vagrant syncs the `vagrant-invoicerio` folder (on the host machine) with `/vagrant` (on the guest machine). Because we cloned `invoicerio` to the `/vagrant` directory, we can access invoicerio from the host machine and you can use your IDE from the host machine for development.

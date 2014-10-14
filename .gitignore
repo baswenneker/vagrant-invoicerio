@@ -1,2 +1,4 @@
 .vagrant
 invoicerio
+invoicerio_old*
+*.html
